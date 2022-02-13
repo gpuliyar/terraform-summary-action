@@ -34,9 +34,11 @@ jobs:
 
           # Environment - name of the deployment environment. 
           # Possible values - production, staging, uat, test, other, etc.
+          # Default value - staging
           environment: production
 
           # Terraform json report file name to parse and generate the summary report.
+          # Default value - tfplan-show.json
           file-name: tfplan-show.json
         env:
           # Github Token to access the pull request and update a comment to it.
