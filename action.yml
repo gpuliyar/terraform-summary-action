@@ -14,9 +14,11 @@ inputs:
   environment:
     description: Environment for which the terraform summary report generated.
     required: true
+    default: staging
   file-name:
     description: JSON terraform report file name.
     required: true
+    default: tfplan-show.json
 outputs:
   commit-id:
     description: Git comment id. Reference to the pull request commit id to query if needed. 
