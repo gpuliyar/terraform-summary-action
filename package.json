@@ -1,0 +1,33 @@
+{
+  "name": "terraform-summary-action",
+  "version": "1.0.0",
+  "description": "Custom Github action to generate terraform summary report and set it as a pull request comment.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gpuliyar/terraform-summary-action.git"
+  },
+  "keywords": [
+    "terraform",
+    "CI",
+    "terraform-report",
+    "terraform-summary",
+    "terraform-summary-report",
+    "summary-report",
+    "utility"
+  ],
+  "author": "gpuliyar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gpuliyar/terraform-summary-action/issues"
+  },
+  "homepage": "https://github.com/gpuliyar/terraform-summary-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "json2md": "^1.12.0",
+    "moment": "^2.29.1"
+  }
+}

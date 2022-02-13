@@ -1,0 +1,25 @@
+name: Generate Terraform Plan Change Report
+author: gpuliyar
+description: Set the generated Terraform Plan change report as a Pull Request comment
+branding:
+  icon: git-pull-request
+  color: blue
+inputs:
+  repository:
+    description: Git Repository name. Format <owner>/<repository name>.
+    required: true
+  pr-number:
+    description: Pull Request number where the CI run will set the terraform summary report as comment.
+    required: true
+  environment:
+    description: Environment for which the terraform summary report generated.
+    required: true
+  file-name:
+    description: JSON terraform report file name.
+    required: true
+outputs:
+  commit-id:
+    description: Git comment id. Reference to the pull request commit id to query if needed. 
+runs:
+  using: node16
+  main: dist/index.js
