@@ -7373,6 +7373,7 @@ const main = async() => {
   try {
     const fileName = core.getInput('file-name', {required: true});
     const tfPlan = fs.readFileSync(fileName, 'utf8');
+    console.log(tfPlan);
     const tfJSON = JSON.parse(tfPlan);
     const tfPlanRows = tfJSON.resource_changes.map(resource => 
       [resource.address, resource.mode, resource.type, resource.name, resource.change.actions.join(', ')]
