@@ -15,19 +15,20 @@ const main = async() => {
     const typeMaxLength = Math.max(...tfPlanRows.map(row => row[2].length));
     const nameMaxLength = Math.max(...tfPlanRows.map(row => row[3].length));
     const actionMaxLength = Math.max(...tfPlanRows.map(row => row[4].length));
+    const totalMaxLength = addressMaxLength + modeMaxLength + typeMaxLength + nameMaxLength + actionMaxLength;
 
-    console.log(`Terraform Plan Summary Report - ${moment.utc().format('YYYY-MM-DD HH:mm:ss')}`);
+    console.log(`\n\n\n\Terraform Plan Summary Report - ${moment.utc().format('YYYY-MM-DD HH:mm:ss')}`);
     console.log('Resources Change Summary List');
 
-    console.log("-".repeat(addressMaxLength + modeMaxLength + typeMaxLength + nameMaxLength + actionMaxLength + 25));
-    console.log(`>>> ${'Address'.padEnd(addressMaxLength + 5)} | ${'Mode'.padEnd(modeMaxLength + 5)} | ${'Type'.padEnd(typeMaxLength + 5)} | ${'Name'.padEnd(nameMaxLength + 5)} | Actions`);
-    console.log("-".repeat(addressMaxLength + modeMaxLength + typeMaxLength + nameMaxLength + actionMaxLength + 25));
+    console.log("-".repeat(totalMaxLength + 40));
+    console.log(`${'Address'.padEnd(addressMaxLength + 5)} | ${'Mode'.padEnd(modeMaxLength + 5)} | ${'Type'.padEnd(typeMaxLength + 5)} | ${'Name'.padEnd(nameMaxLength + 5)} | Actions`);
+    console.log("-".repeat(totalMaxLength + 40));
 
     tfPlanRows.forEach(element => {
       console.log(`${element[0].padEnd(addressMaxLength + 5, '.')} | ${element[1].padEnd(modeMaxLength + 5, '.')} | ${element[2].padEnd(typeMaxLength + 5, '.')} | ${element[3].padEnd(nameMaxLength + 5, '.')} | ${element[4]}`);
     });
 
-    console.log("-".repeat(addressMaxLength + modeMaxLength + typeMaxLength + nameMaxLength + actionMaxLength + 25));
+    console.log("-".repeat(totalMaxLength + 40));
   } catch(error) {
     console.log(error);
   }
