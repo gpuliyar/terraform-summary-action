@@ -7810,7 +7810,7 @@ const main = async() => {
       { table: 
         { headers: ["Address", "Mode", "Type", "Name", "Actions"],
         rows: tfJSON.resource_changes.map(resource => 
-          [resource.address, resource.mode, resource.type, resource.name, resource.change.actions.join(', ')]
+          [`\`${resource.address}\``, `\`${resource.mode}\``, `\`${resource.type}\``, `\`${resource.name}\``, resource.change.actions.join(', ')]
         ),
       }},
     ]);
