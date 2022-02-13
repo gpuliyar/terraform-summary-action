@@ -7372,11 +7372,11 @@ const core = __nccwpck_require__(864);
 const main = async() => {
   try {
     const fileName = core.getInput('file-name', {required: true});
-    const tfPlan = fs.readFileSync(fileName, 'utf16le');
+    const tfPlan = fs.readFileSync(fileName, 'utf8');
     const tfJSON = JSON.parse(tfPlan);
     const tfPlanRows = tfJSON.resource_changes.map(resource => 
       [resource.address, resource.mode, resource.type, resource.name, resource.change.actions.join(', ')]
-    ).sort((a, b) => a[4].localeCompare(b[4]) ? 1 : -1);
+    );
 
     console.log('Terraform Plan Summary:');
     console.log(`  Terraform Plan Summary Report - ${moment.utc().format('YYYY-MM-DD HH:mm:ss')}`);
