@@ -8,7 +8,7 @@ inputs:
   file-name:
     description: JSON terraform report file name.
     required: true
-    default: tfplan-show.json
+    default: ./terraform/tfplan-show.json
 runs:
   using: node16
   main: dist/index.js
