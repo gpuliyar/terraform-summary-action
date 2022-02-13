@@ -7377,10 +7377,10 @@ const main = async() => {
     const tfPlanRows = tfJSON.resource_changes.map(resource => 
       [resource.address, resource.mode, resource.type, resource.name, resource.change.actions.join(', ')]
     );
-    const addressMaxLength = Math.max(...core(tfPlanRows).map(row => row[0].length));
-    const modeMaxLength = Math.max(...core(tfPlanRows).map(row => row[1].length));
-    const typeMaxLength = Math.max(...core(tfPlanRows).map(row => row[2].length));
-    const nameMaxLength = Math.max(...core(tfPlanRows).map(row => row[3].length));
+    const addressMaxLength = Math.max(...tfPlanRows.map(row => row[0].length));
+    const modeMaxLength = Math.max(...tfPlanRows.map(row => row[1].length));
+    const typeMaxLength = Math.max(...tfPlanRows.map(row => row[2].length));
+    const nameMaxLength = Math.max(...tfPlanRows.map(row => row[3].length));
 
     console.log('Terraform Plan Summary:');
     console.log(`>>> Terraform Plan Summary Report - ${moment.utc().format('YYYY-MM-DD HH:mm:ss')}`);
