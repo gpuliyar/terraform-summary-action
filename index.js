@@ -30,11 +30,11 @@ const main = async() => {
     tfPlanRowsSorted.forEach(element => {
       const logStr = `${element[0].padEnd(addressMaxLength + 5, '.')} | ${element[1].padEnd(modeMaxLength + 5, '.')} | ${element[2].padEnd(typeMaxLength + 5, '.')} | ${element[3].padEnd(nameMaxLength + 5, '.')} | ${element[4]}`
 
-      if (element[4].contains('no-op')) {
+      if (element[4].includes('no-op')) {
         console.log(logStr.blue);
-      } else if (element[4].contains('destroy') || element[4].contains('delete')) {
+      } else if (element[4].includes('destroy') || element[4].includes('delete')) {
         console.log(logStr.red);
-      } else if (element[4].contains('update') || element[4].contains('replace')) {
+      } else if (element[4].includes('update') || element[4].includes('replace')) {
         console.log(logStr.yellow);
       } else {
         console.log(logStr.green);
