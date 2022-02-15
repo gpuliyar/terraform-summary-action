@@ -1,12 +1,15 @@
-name: Generate Terraform Plan Change Report
+name: Terraform Plan Summary Report
 author: gpuliyar
-description: Set the generated Terraform Plan change report as a Pull Request comment
+description: >
+  Github custom action to parse terraform plan json report and generate summary report to help 
+  infrastructure engineers to review and analyze the terraform changes for easy review and approval
+  process.
 branding:
   icon: git-pull-request
   color: blue
 inputs:
-  file-name:
-    description: JSON terraform report file name.
+  terraform-plan-file:
+    description: Terraform JSON plan file name with relative or full file path.
     required: true
     default: ./terraform/tfplan-show.json
 runs:

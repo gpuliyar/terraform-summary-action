@@ -4,7 +4,7 @@ const core = require('@actions/core');
 
 const main = async() => {
   try {
-    const fileName = core.getInput('file-name', {required: true});
+    const fileName = core.getInput('terraform-plan-file', { required: true });
     const tfPlan = fs.readFileSync(fileName, 'utf8');
     const tfJSON = JSON.parse(tfPlan);
     const tfPlanRows = tfJSON.resource_changes.map(resource => 
@@ -17,8 +17,8 @@ const main = async() => {
     const actionMaxLength = Math.max(...tfPlanRows.map(row => row[4].length));
     const totalMaxLength = addressMaxLength + modeMaxLength + typeMaxLength + nameMaxLength + actionMaxLength;
 
-    console.log(`\n\n\nTerraform Plan Summary Report - ${moment.utc().format('YYYY-MM-DD HH:mm:ss')}`);
-    console.log('Resources Change Summary List');
+    console.log(`\n\nTerraform Plan Summary Report - ${moment.utc().format('YYYY-MM-DD HH:mm:ss')}`);
+    console.log('Resources Change Summary List\n');
 
     console.log("-".repeat(totalMaxLength + 40));
     console.log(`${'Address'.padEnd(addressMaxLength + 5)} | ${'Mode'.padEnd(modeMaxLength + 5)} | ${'Type'.padEnd(typeMaxLength + 5)} | ${'Name'.padEnd(nameMaxLength + 5)} | Actions`);
