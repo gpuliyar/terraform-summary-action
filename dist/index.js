@@ -8289,7 +8289,7 @@ const main = async() => {
     console.log(`${'Address'.padEnd(addressMaxLength + 5)} | ${'Mode'.padEnd(modeMaxLength + 5)} | ${'Type'.padEnd(typeMaxLength + 5)} | ${'Name'.padEnd(nameMaxLength + 5)} | Actions`);
     console.log("-".repeat(totalMaxLength + 40));
 
-    tfPlanRowsSorted.forEach(element => {
+    tfPlanRows.forEach(element => {
       const logStr = `${element[0].padEnd(addressMaxLength + 5, '.')} | ${element[1].padEnd(modeMaxLength + 5, '.')} | ${element[2].padEnd(typeMaxLength + 5, '.')} | ${element[3].padEnd(nameMaxLength + 5, '.')} | ${element[4]}`
 
       if (element[4].includes('no-op')) {
