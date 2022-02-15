@@ -1,6 +1,6 @@
 const fs = require('fs');
 const moment = require('moment');
-const colors = require('colors');
+const clc = require("cli-color");
 const core = require('@actions/core');
 
 const main = async() => {
@@ -31,13 +31,13 @@ const main = async() => {
       const logStr = `${element[0].padEnd(addressMaxLength + 5, '.')} | ${element[1].padEnd(modeMaxLength + 5, '.')} | ${element[2].padEnd(typeMaxLength + 5, '.')} | ${element[3].padEnd(nameMaxLength + 5, '.')} | ${element[4]}`
 
       if (element[4].includes('no-op')) {
-        console.log(logStr.blue);
+        console.log(clc.blue(logStr));
       } else if (element[4].includes('destroy') || element[4].includes('delete')) {
-        console.log(logStr.red);
+        console.log(clc.red(logStr));
       } else if (element[4].includes('update') || element[4].includes('replace')) {
-        console.log(logStr.yellow);
+        console.log(clc.yellow(logStr));
       } else {
-        console.log(logStr.green);
+        console.log(clc.green(logStr));
       }
     });
 
