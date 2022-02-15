@@ -1,5 +1,6 @@
 const fs = require('fs');
 const moment = require('moment');
+const colors = require('colors');
 const core = require('@actions/core');
 
 const main = async() => {
@@ -11,7 +12,6 @@ const main = async() => {
     const tfPlanRows = tfJSON.resource_changes.map(resource => 
       [resource.address, resource.mode, resource.type, resource.name, resource.change.actions.join(', ')]
     );
-    const tfPlanRowsSorted = tfPlanRows.sort((a, b) => { a[4].localeCompare(b[4]) ? -1 : 1 });
 
     const addressMaxLength = Math.max(...tfPlanRows.map(row => row[0].length));
     const modeMaxLength = Math.max(...tfPlanRows.map(row => row[1].length));
@@ -28,7 +28,17 @@ const main = async() => {
     console.log("-".repeat(totalMaxLength + 40));
 
     tfPlanRowsSorted.forEach(element => {
-      console.log(`${element[0].padEnd(addressMaxLength + 5, '.')} | ${element[1].padEnd(modeMaxLength + 5, '.')} | ${element[2].padEnd(typeMaxLength + 5, '.')} | ${element[3].padEnd(nameMaxLength + 5, '.')} | ${element[4]}`);
+      const logStr = `${element[0].padEnd(addressMaxLength + 5, '.')} | ${element[1].padEnd(modeMaxLength + 5, '.')} | ${element[2].padEnd(typeMaxLength + 5, '.')} | ${element[3].padEnd(nameMaxLength + 5, '.')} | ${element[4]}`
+
+      if (element[4].contains('no-op')) {
+        console.log(logStr.blue);
+      } else if (element[4].contains('destroy') || element[4].contains('delete')) {
+        console.log(logStr.red);
+      } else if (element[4].contains('update') || element[4].contains('replace')) {
+        console.log(logStr.yellow);
+      } else {
+        console.log(logStr.green);
+      }
     });
 
     console.log("-".repeat(totalMaxLength + 40));

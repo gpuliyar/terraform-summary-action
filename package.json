@@ -27,6 +27,7 @@
   "homepage": "https://github.com/gpuliyar/terraform-summary-action#readme",
   "dependencies": {
     "@actions/core": "^1.6.0",
+    "colors": "^1.4.0",
     "moment": "^2.29.1"
   }
 }
