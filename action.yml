@@ -11,7 +11,7 @@ inputs:
   terraform-plan-file:
     description: Terraform JSON plan file name with relative or full file path.
     required: true
-    default: ./terraform/tfplan-show.json
+    default: tfplan-show.json
 runs:
   using: node16
   main: dist/index.js
